@@ -6,3 +6,6 @@
 
 > Launch Playwright Inspector for Given Test
  - PWDEBUG=1 npx playwright test contact.spec.ts:3
+
+ > ESLint
+  - npm run lint

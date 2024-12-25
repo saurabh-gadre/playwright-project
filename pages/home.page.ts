@@ -23,7 +23,7 @@ class HomePage {
     }
 
     async navigate(){
-        await this.page.goto("https://practice.sdetunicorns.com/");
+        await this.page.goto("/");
     }
 }
 

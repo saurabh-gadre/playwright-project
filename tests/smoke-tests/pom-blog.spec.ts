@@ -10,12 +10,12 @@ test.describe('Blog Page Tests', () => {
         await blogPage.navigate();    
     })
 
-    test('Verify Blog Page Links', async ({ page }) => {
+    test('Verify Blog Page Links', async () => {
 
         (await blogPage.postLinks.allTextContents()).forEach(blogText => {
             blogText = blogText.trim();
             expect(blogText.length).toBeGreaterThan(10);
-            console.log("Blog Text -", blogText);
+            //console.log("Blog Text -", blogText);
         });
         expect(await blogPage.postLinks.allTextContents()).toHaveLength(5);
     })

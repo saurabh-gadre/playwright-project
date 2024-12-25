@@ -27,7 +27,7 @@ test.describe('Contact Page Tests', () => {
         await page.locator('[class*="submit-button"]').click();
 
         // verify alert message text
-        let alertMsg = page.locator('[class*="everest-forms-notice"]');
+        const alertMsg = page.locator('[class*="everest-forms-notice"]');
         expect(await alertMsg.textContent()).toContain('Thanks for contacting us! We will be in touch with you shortly');
     });
 });

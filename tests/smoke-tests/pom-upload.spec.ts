@@ -11,19 +11,19 @@ test.describe('Cart Test', () => {
     })
     
 
-    test('Verify File Upload in Cart Menu', async ({ page }) => {
+    test('Verify File Upload in Cart Menu', async () => {
         // upload file
-        let filePath = path.join(__dirname,'../../data/camera-image.png');
+        const filePath = path.join(__dirname,'../../data/camera-image.png');
         await cartPage.uploadComponent().uploadFile(filePath);
 
         // verify success message
-        let successMsg = await cartPage.uploadComponent().cartSuccessMsg.textContent();
+        const successMsg = await cartPage.uploadComponent().cartSuccessMsg.textContent();
         expect(successMsg).toEqual('File camera-image.png uploaded successfully');
     });
 
     test('Verify File Upload with hidden Input file element', async ({ page }) => {
         // select file
-        let filePath = path.join(__dirname,'../../data/camera-image.png');
+        const filePath = path.join(__dirname,'../../data/camera-image.png');
 
          // DOM Manipulation
          await page.evaluate(() => {
@@ -36,13 +36,13 @@ test.describe('Cart Test', () => {
         await cartPage.uploadComponent().uploadFile(filePath);
 
         // verify success message
-        let successMsg = await cartPage.uploadComponent().cartSuccessMsg.textContent();
+        const successMsg = await cartPage.uploadComponent().cartSuccessMsg.textContent();
         expect(successMsg).toEqual('File camera-image.png uploaded successfully');
     });
     
-    test('Verify File Upload with 10 MB file Size', async ({ page }) => {
+    test('Verify File Upload with 10 MB file Size', async () => {
         // upload file
-        let filePath = path.join(__dirname,'../../data/10MB-TESTFILE.pdf');
+        const filePath = path.join(__dirname,'../../data/10MB-TESTFILE.pdf');
         await cartPage.uploadComponent().uploadFile(filePath);
 
         await expect(cartPage.uploadComponent().cartSuccessMsg).toContainText('uploaded successfully',{timeout: 10000});

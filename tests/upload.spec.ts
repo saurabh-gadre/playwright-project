@@ -7,7 +7,7 @@ test.describe('Cart Test', () => {
         await page.goto('https://practice.sdetunicorns.com/cart/');
 
         // select file
-        let filePath = path.join(__dirname,'../data/camera-image.png');
+        const filePath = path.join(__dirname,'../data/camera-image.png');
         await page.setInputFiles('#upfile_1',filePath);
 
         // upload file
@@ -15,7 +15,7 @@ test.describe('Cart Test', () => {
         await page.locator('#upload_1').click();
 
         // verify success message
-        let successMsg = await page.locator('.file_messageblock_fileheader_label').textContent();
+        const successMsg = await page.locator('.file_messageblock_fileheader_label').textContent();
         expect(successMsg).toEqual('File camera-image.png uploaded successfully');
     });
 
@@ -24,7 +24,7 @@ test.describe('Cart Test', () => {
         await page.goto('https://practice.sdetunicorns.com/cart/');
 
         // select file
-        let filePath = path.join(__dirname,'../data/camera-image.png');
+        const filePath = path.join(__dirname,'../data/camera-image.png');
 
          // DOM Manipulation
          await page.evaluate(() => {
@@ -40,7 +40,7 @@ test.describe('Cart Test', () => {
         await page.locator('#upload_1').click();
 
         // verify success message
-        let successMsg = await page.locator('.file_messageblock_fileheader_label').textContent();
+        const successMsg = await page.locator('.file_messageblock_fileheader_label').textContent();
         expect(successMsg).toEqual('File camera-image.png uploaded successfully');
     });
     
@@ -49,7 +49,7 @@ test.describe('Cart Test', () => {
         await page.goto('https://practice.sdetunicorns.com/cart/');
 
         // select file
-        let filePath = path.join(__dirname,'../data/10MB-TESTFILE.pdf');
+        const filePath = path.join(__dirname,'../data/10MB-TESTFILE.pdf');
         await page.setInputFiles('#upfile_1',filePath);
 
         // upload file
