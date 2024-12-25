@@ -5,6 +5,9 @@ test.describe('Contact Page Tests', () => {
     test('Verify Contact Page Form Submission', async ({ page }) => {
         await page.goto("https://practice.sdetunicorns.com/");
 
+        // launches inspector
+        //await page.pause();
+
         // navigate to contact page
         await page.locator('#zak-primary-menu li').nth(4).click();
 
