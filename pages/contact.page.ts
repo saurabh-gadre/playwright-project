@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test";
+import { Page, Locator, expect } from "@playwright/test";
 
 class ContactPage{
     page: Page;
@@ -23,6 +23,18 @@ class ContactPage{
 
     async navigate(){
         await this.page.goto("https://practice.sdetunicorns.com/contact/");
+    }
+
+    async fillFormDetails(name: string, email: string, phone: string, msg: string) {
+        await this.nameInput.scrollIntoViewIfNeeded();
+        await this.nameInput.first().fill(name);
+        await this.emailInput.fill(email);
+        await this.phoneInput.fill(phone);
+        await this.msgTextArea.fill(msg);
+    }
+
+    async submitForm(){
+        await this.submitBtn.click();
     }
 }
 

@@ -13,19 +13,14 @@ test.describe('Contact Page Tests', () => {
 
     test('Verify Contact Page Form Submission', async ({ page }) => {
         // fill form fields
-        await contactPage.nameInput.scrollIntoViewIfNeeded();
-        await contactPage.nameInput.first().fill('John Doe');
-        await contactPage.emailInput.fill('john.doe@testmail.com');
-        await contactPage.phoneInput.fill('012-24443-4322');
-        await contactPage.msgTextArea.fill('Sample Test Message');
-
+        await contactPage.fillFormDetails('John Doe','john.doe@testmail.com','012-24443-4322','Sample Test Message');
         expect.soft(await contactPage.msgTextArea.inputValue()).toEqual("Sample Test Message");
-
-        // click submit
-        await contactPage.submitBtn.click();
+        await contactPage.submitForm();
 
         // verify alert message text
         let alertMsg = await contactPage.alertMsg;
         expect(await alertMsg.textContent()).toContain('Thanks for contacting us! We will be in touch with you shortly');
     });
 });
+
+
