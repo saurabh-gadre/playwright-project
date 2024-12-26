@@ -15,5 +15,5 @@
  - npx playwright test tests --workers 6
 
 > Allure Reports
- - npx allure generate ./allure-results -o ./allure-report
+ - npx allure generate ./allure-results --clean -o ./allure-report
  - npx allure open ./allure-report
