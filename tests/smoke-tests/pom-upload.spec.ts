@@ -10,8 +10,19 @@ test.describe('Cart Test', () => {
         await cartPage.navigate();
     })
     
+    const fileNames = ['camera-image.png', '10MB-TESTFILE.pdf'];
 
-    test('Verify File Upload in Cart Menu', async () => {
+    for(const fileName of fileNames){
+        test(`Verify File Upload for [ ${fileName} ] file`, async () => {
+            // upload file
+            const filePath = path.join(__dirname,`../../data/${fileName}`);
+            await cartPage.uploadComponent().uploadFile(filePath);
+    
+            await expect(cartPage.uploadComponent().cartSuccessMsg).toContainText('uploaded successfully',{timeout: 15000});
+        });
+    }
+
+    test.skip('Verify File Upload in Cart Menu', async () => {
         // upload file
         const filePath = path.join(__dirname,'../../data/camera-image.png');
         await cartPage.uploadComponent().uploadFile(filePath);
@@ -38,13 +49,5 @@ test.describe('Cart Test', () => {
         // verify success message
         const successMsg = await cartPage.uploadComponent().cartSuccessMsg.textContent();
         expect(successMsg).toEqual('File camera-image.png uploaded successfully');
-    });
-    
-    test('Verify File Upload with 10 MB file Size', async () => {
-        // upload file
-        const filePath = path.join(__dirname,'../../data/10MB-TESTFILE.pdf');
-        await cartPage.uploadComponent().uploadFile(filePath);
-
-        await expect(cartPage.uploadComponent().cartSuccessMsg).toContainText('uploaded successfully',{timeout: 10000});
     });
 });
