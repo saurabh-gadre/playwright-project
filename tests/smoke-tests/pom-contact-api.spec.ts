@@ -1,6 +1,6 @@
 import { test, expect, APIResponse } from "@playwright/test";
 import ContactPage from "../../pages/contact.page";
-import APIController from "../../controllers/api.Controller";
+import APIController from "../../controllers/api.controller";
 
 test.describe('Contact Page Tests', () => {
     let contactPage: ContactPage;
