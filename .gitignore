@@ -6,3 +6,5 @@ node_modules/
 .allure/
 allure-report/
 allure-results/
+loggedInState.json
+noLoggedInState.json
